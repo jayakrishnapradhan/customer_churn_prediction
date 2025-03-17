@@ -1,0 +1,140 @@
+2025-03-13 12:45:34,164 - churn_prediction_api - INFO - Attempting to load the dataset from CSV file.
+2025-03-13 12:45:34,273 - churn_prediction_api - INFO - Dataset loaded successfully.
+2025-03-13 12:45:34,279 - churn_prediction_api - INFO - First few rows of the dataset:
+   CustomerID  Gender  SeniorCitizen Partner Dependents  Tenure PhoneService  \
+0        1001  Female              0     Yes         No       1           No   
+1        1002    Male              0      No         No      34          Yes   
+
+      MultipleLines InternetService OnlineSecurity  ... DeviceProtection  \
+0  No phone service             DSL             No  ...               No   
+1                No             DSL            Yes  ...              Yes   
+
+  TechSupport StreamingTV StreamingMovies        Contract PaperlessBilling  \
+0          No          No              No  Month-to-month              Yes   
+1          No          No              No        One year               No   
+
+      PaymentMethod MonthlyCharges  TotalCharges Churn  
+0  Electronic check          29.85         29.85    No  
+1      Mailed check          56.95        1889.5    No  
+
+[2 rows x 21 columns]
+2025-03-13 12:47:24,991 - churn_prediction_api - INFO - Attempting to fetch data from REST API.
+2025-03-13 12:47:25,028 - churn_prediction_api - INFO - API Accessed: /get_data_from_csv from IP: 192.168.29.179
+2025-03-13 12:47:25,128 - churn_prediction_api - INFO - Log file successfully retrieved by 192.168.29.179
+2025-03-13 12:47:25,558 - churn_prediction_api - INFO - Raw data saved to: ./raw_data/api_data_20250313_124725.csv
+2025-03-13 12:48:25,595 - churn_prediction_api - INFO - Attempting to fetch data from REST API.
+2025-03-13 12:48:25,599 - churn_prediction_api - INFO - API Accessed: /get_data_from_csv from IP: 192.168.29.179
+2025-03-13 12:48:25,620 - churn_prediction_api - INFO - Log file successfully retrieved by 192.168.29.179
+2025-03-13 12:48:25,986 - churn_prediction_api - INFO - Raw data saved to: ./raw_data/api_data_20250313_124825.csv
+2025-03-13 12:49:26,022 - churn_prediction_api - INFO - Attempting to fetch data from REST API.
+2025-03-13 12:49:26,025 - churn_prediction_api - INFO - API Accessed: /get_data_from_csv from IP: 192.168.29.179
+2025-03-13 12:49:26,050 - churn_prediction_api - INFO - Log file successfully retrieved by 192.168.29.179
+2025-03-13 12:49:26,466 - churn_prediction_api - INFO - Raw data saved to: ./raw_data/api_data_20250313_124926.csv
+2025-03-13 12:50:26,503 - churn_prediction_api - INFO - Attempting to fetch data from REST API.
+2025-03-13 12:50:26,506 - churn_prediction_api - INFO - API Accessed: /get_data_from_csv from IP: 192.168.29.179
+2025-03-13 12:50:26,533 - churn_prediction_api - INFO - Log file successfully retrieved by 192.168.29.179
+2025-03-13 12:50:26,916 - churn_prediction_api - INFO - Raw data saved to: ./raw_data/api_data_20250313_125026.csv
+2025-03-13 12:51:25,948 - churn_prediction_api - INFO - API data ingestion scheduler started.
+2025-03-13 12:51:32,740 - churn_prediction_api - INFO - Contents of the folder './raw_data':
+2025-03-13 12:51:38,371 - churn_prediction_api - INFO - Contents of the folder './raw_data':
+2025-03-13 12:51:47,858 - churn_prediction_api - INFO - Creating an SQLAlchemy engine for SQLite.
+2025-03-13 12:51:47,866 - churn_prediction_api - INFO - Fetching the entire table 'customer_service' into a Pandas DataFrame.
+2025-03-13 12:51:48,009 - churn_prediction_api - INFO - Data loaded successfully from the database.
+2025-03-13 12:51:48,016 - churn_prediction_api - INFO - First few rows of the DataFrame:
+   CustomerID  Gender  SeniorCitizen  Partner  Dependents  Tenure  \
+0  7590-VHVEg  Female              0     True        True       1   
+1  7590-VHVEG  Female              0     True        True       1   
+
+   PhoneService     MultipleLines InternetService OnlineSecurity  ...  \
+0          True  No phone service             DSL             No  ...   
+1          True  No phone service             DSL             No  ...   
+
+  DeviceProtection TechSupport StreamingTV StreamingMovies        Contract  \
+0               No          No          No              No  Month-to-month   
+1               No          No          No              No  Month-to-month   
+
+  PaperlessBilling     PaymentMethod MonthlyCharges  TotalCharges  Churn  
+0             True  Electronic check          29.85         29.85   True  
+1             True  Electronic check          29.85         29.85   True  
+
+[2 rows x 21 columns]
+2025-03-13 12:51:52,074 - churn_prediction_api - INFO - Making a GET request to the API: http://192.168.29.179:5000/get_data_from_csv
+2025-03-13 12:51:52,080 - churn_prediction_api - INFO - API Accessed: /get_data_from_csv from IP: 192.168.29.179
+2025-03-13 12:51:52,117 - churn_prediction_api - INFO - Log file successfully retrieved by 192.168.29.179
+2025-03-13 12:51:52,381 - churn_prediction_api - INFO - API request successful. Processing response...
+2025-03-13 12:51:52,428 - churn_prediction_api - INFO - JSON data is valid and non-empty.
+2025-03-13 12:51:52,458 - churn_prediction_api - INFO - Data successfully converted to DataFrame.
+2025-03-13 12:51:52,466 - churn_prediction_api - INFO - First few rows of the DataFrame:
+  Churn        Contract  CustomerID Dependents DeviceProtection  Gender  \
+0    No  Month-to-month        1001         No               No  Female   
+1    No        One year        1002         No              Yes    Male   
+
+  InternetService  MonthlyCharges     MultipleLines OnlineBackup  ...  \
+0             DSL           29.85  No phone service          Yes  ...   
+1             DSL           56.95                No           No  ...   
+
+  PaperlessBilling Partner     PaymentMethod PhoneService SeniorCitizen  \
+0              Yes     Yes  Electronic check           No             0   
+1               No      No      Mailed check          Yes             0   
+
+   StreamingMovies StreamingTV TechSupport Tenure  TotalCharges  
+0               No          No          No      1         29.85  
+1               No          No          No     34        1889.5  
+
+[2 rows x 21 columns]
+2025-03-13 12:51:52,466 - churn_prediction_api - INFO - Final DataFrame:
+2025-03-13 12:51:52,470 - churn_prediction_api - INFO - 
+  Churn        Contract  CustomerID Dependents DeviceProtection  Gender  \
+0    No  Month-to-month        1001         No               No  Female   
+1    No        One year        1002         No              Yes    Male   
+
+  InternetService  MonthlyCharges     MultipleLines OnlineBackup  ...  \
+0             DSL           29.85  No phone service          Yes  ...   
+1             DSL           56.95                No           No  ...   
+
+  PaperlessBilling Partner     PaymentMethod PhoneService SeniorCitizen  \
+0              Yes     Yes  Electronic check           No             0   
+1               No      No      Mailed check          Yes             0   
+
+   StreamingMovies StreamingTV TechSupport Tenure  TotalCharges  
+0               No          No          No      1         29.85  
+1               No          No          No     34        1889.5  
+
+[2 rows x 21 columns]
+2025-03-13 12:52:38,074 - churn_prediction_api - INFO - Data successfully saved to: ./raw_data_csv/csv_data_20250313_125238.csv
+2025-03-13 12:52:44,390 - churn_prediction_api - INFO - Contents of the folder './raw_data_csv':
+2025-03-13 12:56:47,652 - churn_prediction_api - INFO - Starting data rectification process.
+2025-03-13 12:56:47,660 - churn_prediction_api - INFO - Missing values detected. Rectifying missing values.
+2025-03-13 12:56:47,701 - churn_prediction_api - INFO - Missing values rectified.
+2025-03-13 12:56:47,712 - churn_prediction_api - INFO - Data type mismatch detected in 'TotalCharges'. Converting to numeric.
+2025-03-13 12:56:47,715 - churn_prediction_api - INFO - 'TotalCharges' rectified.
+2025-03-13 12:56:47,715 - churn_prediction_api - INFO - Data rectification process completed.
+2025-03-13 12:57:01,891 - churn_prediction_api - INFO - Computing correlation with the 'Churn' column.
+2025-03-13 12:57:01,901 - churn_prediction_api - INFO - Correlation with 'Churn':
+Churn               1.000000
+MonthlyCharges      0.193356
+PaperlessBilling    0.191825
+SeniorCitizen       0.150889
+PaymentMethod       0.107062
+MultipleLines       0.038037
+PhoneService        0.011942
+CustomerID          0.010286
+Gender             -0.008612
+StreamingTV        -0.036581
+StreamingMovies    -0.038492
+InternetService    -0.047291
+Partner            -0.150448
+Dependents         -0.164221
+DeviceProtection   -0.178134
+OnlineBackup       -0.195525
+TotalCharges       -0.199428
+TechSupport        -0.282492
+OnlineSecurity     -0.289309
+Tenure             -0.352229
+Contract           -0.396713
+Name: Churn, dtype: float64
+2025-03-13 12:57:01,902 - churn_prediction_api - INFO - Generating correlation heatmap.
+2025-03-13 12:57:03,235 - churn_prediction_api - INFO - Correlation heatmap generated successfully.
+2025-03-13 12:57:09,570 - churn_prediction_api - INFO - Dropping specified columns from the DataFrame.
+2025-03-13 12:57:09,574 - churn_prediction_api - INFO - Specified columns dropped successfully.
+2025-03-13 12:57:09,574 - churn_prediction_api - INFO - Updated DataFrame columns: ['CustomerID', 'Partner', 'Dependents', 'Tenure', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'MonthlyCharges', 'TotalCharges', 'Churn']
